@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${people.first_name}">View Post</title>
+</head>
+
+<body>
+
+<header th:replace="layout :: site-header" ></header>
+
+<main id="posts">
+    <article>
+        <h2 class="title" th:text="${people.first_name}">First Name</h2>
+        <h2 class="title" th:text="${people.last_name}">Last Name</h2>
+        <img th:src="${people.photo}" alt="" src="../../../public/${people.photo}"/>
+    </article>
+</main>
+
+<footer th:replace="layout :: site-footer" ></footer>
+
+</body>
+
+</html>

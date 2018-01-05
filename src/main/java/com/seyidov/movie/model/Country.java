@@ -19,6 +19,9 @@ public class Country {
     @Column(length = 50)
     private String zipcode;
 
+    public Country() {
+    }
+
     public Country(String name, String description, String zipcode) {
         this.name = name;
         this.description = description;

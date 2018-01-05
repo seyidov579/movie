@@ -6,6 +6,10 @@
 </head>
 <body>
 <div id="site-content">
+	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out"/>
+	</form>
 	<header th:replace="layout :: site-header"></header>
 		<main class="main-content">
 				<div class="container">
@@ -105,7 +109,7 @@
 						</div>
 					</div>
 				</div> <!-- .container -->
-			</main>
+		</main>
 	<footer th:replace="layout :: site-footer" ></footer>
 </div>
 	<script src="../static/js/jquery-1.11.1.min.js" th:src="@{/js/jquery-1.11.1.min.js}"></script>

@@ -1,7 +1,10 @@
 package com.seyidov.movie.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.awt.*;
+import java.nio.file.Path;
 import java.util.Set;
 
 @Entity
@@ -17,17 +20,19 @@ public class People {
     @Column(nullable = false, length = 30)
     private String last_name;
 
-    @Lob
-    @Column(name="People_photo", nullable=false, columnDefinition="mediumblob")
-    private byte photo;
+    @Lob @Basic(fetch = FetchType.LAZY)
+    @Column(name="photo", nullable=false)
+    private String photo;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "people_peopletype", joinColumns = @JoinColumn(name = "people_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "peopletype_id", referencedColumnName = "id"))
     private Set<PeopleType> peopleType;
 
+    public People() {
+    }
 
-    public People(String first_name, String last_name, byte photo, Set<PeopleType> peopleType) {
+    public People(String first_name, String last_name, String photo, Set<PeopleType> peopleType) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.photo = photo;
@@ -58,11 +63,11 @@ public class People {
         this.last_name = last_name;
     }
 
-    public byte getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(byte photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

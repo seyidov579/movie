@@ -17,9 +17,9 @@ public class Movies {
     @Column(nullable = false, length = 100)
     private String name;
 
-    @Lob
-    @Column(name="movie_cover", nullable=false, columnDefinition="mediumblob")
-    private byte cover;
+    @Lob @Basic(fetch = FetchType.LAZY)
+    @Column(name = "cover", nullable=false)
+    private String cover;
 
     @Lob
     @Column(nullable = false)
@@ -55,7 +55,10 @@ public class Movies {
             inverseJoinColumns = @JoinColumn(name = "people_id", referencedColumnName = "id"))
     private Set<People> writer;
 
-    public Movies(String name, byte cover, String description, Integer imdb, Date creatdate, Country country, Date minute, Set<Category> category, Set<People>  directed, Set<People> writer) {
+    public Movies(){
+    }
+
+    public Movies(String name, String cover, String description, Integer imdb, Date creatdate, Country country, Date minute, Set<Category> category, Set<People>  directed, Set<People> writer) {
         this.name = name;
         this.cover = cover;
         this.description = description;
@@ -84,11 +87,11 @@ public class Movies {
         this.name = name;
     }
 
-    public byte getCover() {
+    public String getCover() {
         return cover;
     }
 
-    public void setCover(byte cover) {
+    public void setCover(String cover) {
         this.cover = cover;
     }
 

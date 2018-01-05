@@ -12,6 +12,9 @@ public class PeopleType {
     @Column(nullable = false, length = 50)
     private String name;
 
+    public PeopleType(){
+    }
+
     public PeopleType(String name) {
         this.name = name;
     }
