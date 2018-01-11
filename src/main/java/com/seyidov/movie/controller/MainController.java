@@ -35,4 +35,29 @@ public class MainController {
     public String single(){
         return "single";
     }
+
+    @RequestMapping(value = {"/cabinet", "/cabinet/index"})
+    public String cabinet(){
+        return "cabinet/index";
+    }
+
+    @RequestMapping(value ="/cabinet/blank_page")
+    public String blank_page(){
+        return "cabinet/blank_page";
+    }
+
+    @RequestMapping(value ="/cabinet/charts")
+    public String charts(){
+        return "cabinet/charts";
+    }
+
+    @RequestMapping(value ="/cabinet/codes")
+    public String codes(){
+        return "cabinet/codes";
+    }
+
+    @RequestMapping(value ="/cabinet/compose-mail")
+    public String compose_mail(){
+        return "cabinet/compose-mail";
+    }
 }
